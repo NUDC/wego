@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <title>哪都通 WeGo · 下载</title>
+    <meta
+      name="description"
+      content="哪都通 WeGo 官方下载页，提供最新版本安装包、历史版本与更新日志。"
+    />
+    <meta property="og:title" content="哪都通 WeGo · 下载" />
+    <meta property="og:description" content="哪都通 WeGo 官方下载页，提供最新版本安装包、历史版本与更新日志。" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <script>
+      // 首屏前定好主题，避免深浅色闪烁
+      (function () {
+        var saved = localStorage.getItem('wego-theme')
+        var theme =
+          saved === 'light' || saved === 'dark'
+            ? saved
+            : window.matchMedia('(prefers-color-scheme: light)').matches
+              ? 'light'
+              : 'dark'
+        document.documentElement.dataset.theme = theme
+      })()
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
