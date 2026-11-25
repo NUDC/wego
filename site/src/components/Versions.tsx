@@ -36,7 +36,9 @@ export default function Versions({ state }: { state: ReleasesState }) {
         <div className="version-list">
           {releases.map((item, index) => {
             const asset =
-              item.assets.find((a) => a.name.toLowerCase().endsWith('.zip')) ?? item.assets[0]
+              item.assets.find((a) => a.name.toLowerCase().endsWith('.exe')) ??
+              item.assets.find((a) => a.name.toLowerCase().endsWith('.zip')) ??
+              item.assets[0]
             const downloadUrl = asset?.browser_download_url ?? item.html_url
 
             return (

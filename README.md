@@ -10,7 +10,7 @@
 | --- | --- |
 | 官网首屏 | 构建期调 Releases API 内联进产物 |
 | 官网「历史版本」列表 | 浏览器运行时调 Releases API，缓存 30 分钟 |
-| 桌面端检查更新 | 请求 `https://api.github.com/repos/NUDC/wego/releases/latest`，读取 Windows zip 与 `.sha256` asset |
+| 桌面端检查更新 | 请求 `https://api.github.com/repos/NUDC/wego/releases/latest`，读取 Windows exe 与 `.sha256` asset |
 
 ## 目录结构
 
@@ -42,7 +42,7 @@ npm run preview
 由私有 `wego-desktop` 仓库的发布 workflow 自动完成：
 
 1. 构建 Windows 安装包并计算 SHA256。
-2. 上传 `wego-windows-x64-<version>.zip` 和 `.zip.sha256` 到本仓库 GitHub Release。
+2. 上传 `wego-windows-x64-<version>.exe` 和 `.exe.sha256` 到本仓库 GitHub Release。
 3. Release 发布后自动触发 Pages 重新部署。
 4. 桌面端通过 Releases API 获取最新版本并校验下载包。
 

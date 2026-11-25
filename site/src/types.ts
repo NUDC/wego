@@ -27,7 +27,9 @@ export interface GithubRelease {
 /** 把 Releases API 的条目转成首屏用的结构。 */
 export function toLatestRelease(release: GithubRelease): LatestRelease {
   const asset =
-    release.assets.find((a) => a.name.toLowerCase().endsWith('.zip')) ?? release.assets[0]
+    release.assets.find((a) => a.name.toLowerCase().endsWith('.exe')) ??
+    release.assets.find((a) => a.name.toLowerCase().endsWith('.zip')) ??
+    release.assets[0]
 
   return {
     version: release.tag_name.replace(/^v/i, ''),

@@ -52,7 +52,7 @@ export default function Hero({ release, loading }: Props) {
         </div>
 
         <p className="hero-meta">
-          {APP.platform} · zip 免安装 ·{' '}
+          {APP.platform} · exe 免安装 ·{' '}
           <a href={`${REPO_URL}/releases`} target="_blank" rel="noreferrer">
             查看全部版本
           </a>
