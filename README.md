@@ -4,19 +4,18 @@
 
 ## 数据源
 
-- **GitHub Releases**：安装包与发布说明的真源。
-- **`site/public/updates/latest.json`**：桌面端自动更新清单，由私有 `wego-desktop` 发布流程自动写入并触发 Pages 部署。
+**GitHub Releases 是唯一真源**：安装包、发布说明、版本列表和桌面端更新检查都来自 Releases API。不需要维护 `latest.json`。
 
 | 用途 | 取数方式 |
 | --- | --- |
-| 官网首屏/历史版本 | 构建期/运行时调 GitHub Releases API |
-| 桌面端检查更新 | 请求 `https://nudc.github.io/wego/updates/latest.json` |
+| 官网首屏 | 构建期调 Releases API 内联进产物 |
+| 官网「历史版本」列表 | 浏览器运行时调 Releases API，缓存 30 分钟 |
+| 桌面端检查更新 | 请求 `https://api.github.com/repos/NUDC/wego/releases/latest`，读取 Windows zip 与 `.sha256` asset |
 
 ## 目录结构
 
 ```
 site/                               官网源码（React + Vite + TypeScript）
-  public/updates/latest.json        桌面端更新清单（自动生成）
   src/config.ts                     站点文案
   vite.config.ts                    base='/wego/'，构建期抓取最新 Release
 .github/workflows/deploy-pages.yml  push main 或发布 Release 时自动部署
@@ -43,27 +42,11 @@ npm run preview
 由私有 `wego-desktop` 仓库的发布 workflow 自动完成：
 
 1. 构建 Windows 安装包并计算 SHA256。
-2. 上传安装包到本仓库 GitHub Release。
-3. 更新 `site/public/updates/latest.json`（版本、下载 URL、sha256、size、发布时间、说明）。
-4. 提交 manifest 后触发 Pages 部署。
+2. 上传 `wego-windows-x64-<version>.zip` 和 `.zip.sha256` 到本仓库 GitHub Release。
+3. Release 发布后自动触发 Pages 重新部署。
+4. 桌面端通过 Releases API 获取最新版本并校验下载包。
 
-`latest.json` 示例：
-
-```json
-{
-  "version": "0.1.1",
-  "pub_date": "2026-11-25T00:00:00Z",
-  "notes": "更新说明",
-  "windows": {
-    "x64": {
-      "url": "https://github.com/NUDC/wego/releases/download/v0.1.1/wego-windows-x64-0.1.1.zip",
-      "sha256": "<sha256>",
-      "size": 12345678
-    }
-  },
-  "min_supported_version": "0.1.0"
-}
-```
+安装包只放 Release，不要提交进仓库：Pages 有 1GB 站点限制，二进制进 git 后历史也清不掉。
 
 ## 自定义域名
 
