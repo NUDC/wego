@@ -1,12 +1,12 @@
 :root {
-  --bg: #0b0d12;
-  --bg-soft: #12151d;
+  --bg: #070b14;
+  --bg-soft: #0e1422;
   --card: rgba(255, 255, 255, 0.04);
   --card-border: rgba(255, 255, 255, 0.09);
   --text: #e9ecf3;
   --text-dim: #9aa3b5;
-  --accent: #5b8cff;
-  --accent-2: #9b5bff;
+  --accent: #22d3ee;
+  --accent-2: #3b82f6;
   --accent-contrast: #ffffff;
   --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   --radius: 14px;
@@ -21,8 +21,8 @@
   --card-border: rgba(16, 24, 40, 0.09);
   --text: #141821;
   --text-dim: #5b6479;
-  --accent: #2f62f5;
-  --accent-2: #7c3aed;
+  --accent: #0891b2;
+  --accent-2: #2563eb;
   --accent-contrast: #ffffff;
   --shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
 
@@ -95,10 +95,22 @@ a:hover {
 }
 
 .brand-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 7px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  background: none;
+}
+
+.brand-mark-light {
+  display: none;
+}
+
+:root[data-theme='light'] .brand-mark-dark {
+  display: none;
+}
+
+:root[data-theme='light'] .brand-mark-light {
+  display: block;
 }
 
 .nav-links {
@@ -159,6 +171,14 @@ a:hover {
   position: relative;
 }
 
+.hero-logo {
+  display: block;
+  width: clamp(72px, 12vw, 104px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 12px 28px rgba(34, 211, 238, 0.24));
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -195,16 +215,6 @@ a:hover {
   align-items: baseline;
   justify-content: center;
   gap: 0.75rem;
-}
-
-.hero-latin {
-  font-size: 0.42em;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }
 
 .hero-tagline {

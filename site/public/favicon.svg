@@ -1,13 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#5b8cff" />
-      <stop offset="100%" stop-color="#9b5bff" />
+    <linearGradient id="wego-brand" x1="5" y1="55" x2="59" y2="7" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#3B82F6" />
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="url(#g)" />
-  <path
-    d="M32 14c-7.2 0-13 5.6-13 12.6 0 9.2 11.3 20.6 12.2 21.5a1.2 1.2 0 0 0 1.7 0C33.7 47.2 45 35.8 45 26.6 45 19.6 39.2 14 32 14Zm0 17.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"
-    fill="#fff"
-  />
+  <rect width="64" height="64" rx="14" fill="#070B14" />
+  <g
+    fill="none"
+    stroke="url(#wego-brand)"
+    stroke-width="2.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M5 46 L22 32 L34 36 L59 12" />
+    <path d="M5 55 L22 41 L34 45 L59 21" />
+    <path d="M32 13 L41 32 L32 51 L23 32 Z" />
+  </g>
+  <g fill="url(#wego-brand)">
+    <circle cx="32" cy="7" r="2.1" />
+    <circle cx="32" cy="57" r="2.1" />
+  </g>
 </svg>

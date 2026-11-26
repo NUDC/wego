@@ -1,3 +1,5 @@
+import { displayNotes } from './utils'
+
 /** 首屏展示用的精简版本信息，由 GitHub Release 归一化而来。 */
 export interface LatestRelease {
   version: string
@@ -34,7 +36,7 @@ export function toLatestRelease(release: GithubRelease): LatestRelease {
   return {
     version: release.tag_name.replace(/^v/i, ''),
     downloadUrl: asset?.browser_download_url ?? release.html_url,
-    note: (release.body ?? '').trim(),
+    note: displayNotes(release.body),
     pubTime: release.published_at,
   }
 }

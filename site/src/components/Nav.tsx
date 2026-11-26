@@ -1,3 +1,5 @@
+import logoOnDark from '../assets/logo-on-dark.svg'
+import logoOnLight from '../assets/logo-on-light.svg'
 import { APP, REPO_URL } from '../config'
 import ThemeToggle from './ThemeToggle'
 
@@ -6,7 +8,8 @@ export default function Nav() {
     <nav className="nav">
       <div className="container nav-inner">
         <a className="brand" href="#top">
-          <span className="brand-mark" aria-hidden="true" />
+          <img className="brand-mark brand-mark-dark" src={logoOnDark} alt="" aria-hidden="true" />
+          <img className="brand-mark brand-mark-light" src={logoOnLight} alt="" aria-hidden="true" />
           {APP.name}
         </a>
         <div className="nav-links">

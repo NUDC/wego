@@ -1,6 +1,6 @@
 # wego
 
-哪都通官网（GitHub Pages）。
+Wego Network Proxy 官网（GitHub Pages）。
 
 ## 数据源
 

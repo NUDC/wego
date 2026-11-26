@@ -1,6 +1,6 @@
 import { REPO_URL } from '../config'
 import type { ReleasesState } from '../hooks/useReleases'
-import { formatDate, formatSize, normalizeVersion } from '../utils'
+import { displayNotes, formatDate, formatSize, normalizeVersion } from '../utils'
 
 export default function Versions({ state }: { state: ReleasesState }) {
   const { releases, loading, failed, stale } = state
@@ -40,18 +40,19 @@ export default function Versions({ state }: { state: ReleasesState }) {
               item.assets.find((a) => a.name.toLowerCase().endsWith('.zip')) ??
               item.assets[0]
             const downloadUrl = asset?.browser_download_url ?? item.html_url
+            const notes = displayNotes(item.body)
 
             return (
               <div className="card version-row" key={item.tag_name}>
                 <div className="version-main">
                   <h3>
-                    v{normalizeVersion(item.name || item.tag_name)}
+                    {normalizeVersion(item.name || item.tag_name)}
                     {index === 0 && !item.prerelease && (
                       <span className="tag tag-latest">最新</span>
                     )}
                     {item.prerelease && <span className="tag">预发布</span>}
                   </h3>
-                  {item.body && <p className="version-note">{item.body}</p>}
+                  {notes && <p className="version-note">{notes}</p>}
                   <p className="version-meta">
                     {formatDate(item.published_at)}
                     {asset && ` · ${formatSize(asset.size)}`}

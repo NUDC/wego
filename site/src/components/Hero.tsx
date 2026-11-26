@@ -1,3 +1,4 @@
+import logo from '../assets/logo-symbol.png'
 import { APP, REPO_URL } from '../config'
 import type { LatestRelease } from '../types'
 import { formatDate } from '../utils'
@@ -14,19 +15,17 @@ export default function Hero({ release, loading }: Props) {
     <header className="hero">
       <div className="hero-glow" aria-hidden="true" />
       <div className="container hero-inner">
+        <img className="hero-logo" src={logo} alt={`${APP.name} Logo`} />
         <a className="badge" href={`${REPO_URL}/releases`} target="_blank" rel="noreferrer">
           <span className="badge-dot" />
           {release
-            ? `最新版本 v${release.version} · ${formatDate(release.pubTime)}`
+            ? `最新版本 ${release.version} · ${formatDate(release.pubTime)}`
             : loading
               ? '正在获取最新版本…'
               : '前往 GitHub 查看发布'}
         </a>
 
-        <h1 className="hero-title">
-          {APP.name}
-          <span className="hero-latin">{APP.latinName}</span>
-        </h1>
+        <h1 className="hero-title">{APP.name}</h1>
         <p className="hero-tagline">{APP.tagline}</p>
         <p className="hero-desc">{APP.description}</p>
 
@@ -37,7 +36,7 @@ export default function Hero({ release, loading }: Props) {
                 <span className="btn-icon" aria-hidden="true">
                   ↓
                 </span>
-                下载 v{release.version}
+                下载 {release.version}
               </a>
               <CopyLinkButton url={release.downloadUrl} />
             </>

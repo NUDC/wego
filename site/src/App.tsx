@@ -28,9 +28,7 @@ export default function App() {
       </main>
       <footer className="footer">
         <div className="container footer-inner">
-          <span>
-            © {APP.name} {APP.latinName}
-          </span>
+          <span>© {APP.name}</span>
           <a href={REPO_URL} target="_blank" rel="noreferrer">
             GitHub 仓库
           </a>
